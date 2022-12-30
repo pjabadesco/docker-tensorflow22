@@ -1,0 +1,32 @@
+version: '3.4'
+
+services:
+  tensorflow22:
+    build:
+      context: .
+      args:
+        K3S_VERSION: v1.21.5-k3s1
+    tty: true           # <-- This option
+    ulimits:
+      memlock: -1
+    restart: unless-stopped
+    network_mode: bridge
+    environment:
+      - TZ=Asia/Manila
+      - PUID=0
+      - PGID=0
+      - NVIDIA_DRIVER_CAPABILITIES=all
+      - NVIDIA_VISIBLE_DEVICES=all
+    volumes:
+      - ./src:/workspace/src
+      - type: tmpfs
+        target: /dev/shm
+        tmpfs:
+          size: 1000000000 # ~1gb
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              device_ids: ['1']
+              capabilities: [gpu]
