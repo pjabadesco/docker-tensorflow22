@@ -2,7 +2,7 @@ FROM nvcr.io/nvidia/tensorflow:22.07-tf2-py3 as base
 
 RUN apt-get update -y && apt-get install -y screen
 
-RUN pip3 install --upgrade pip
+# RUN pip3 install --upgrade pip
 RUN pip3 install git+https://github.com/tensorflow/docs 
 RUN pip3 install seaborn pymysql google-cloud-pubsub 
 RUN pip3 install --upgrade protobuf==3.20.1
