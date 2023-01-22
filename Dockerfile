@@ -1,6 +1,6 @@
 FROM nvcr.io/nvidia/tensorflow:22.07-tf2-py3 as base
 
-RUN apt-get update -y && apt-get install -y screen
+RUN apt-get update -y && apt-get install -y screen cron
 
 # RUN pip3 install --upgrade pip
 RUN pip3 install git+https://github.com/tensorflow/docs 
