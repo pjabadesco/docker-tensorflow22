@@ -4,7 +4,7 @@ RUN apt-get update -y && apt-get install -y screen cron
 
 # RUN pip3 install --upgrade pip
 RUN pip3 install git+https://github.com/tensorflow/docs 
-RUN pip3 install seaborn pymysql google-cloud-pubsub 
+RUN pip3 install seaborn pymysql google-cloud-pubsub flask_restful
 RUN pip3 install --upgrade protobuf==3.20.1
 
 RUN curl -L "http://prdownloads.sourceforge.net/ta-lib/ta-lib-0.4.0-src.tar.gz" -o /tmp/ta-lib-0.4.0-src.tar.gz && \
